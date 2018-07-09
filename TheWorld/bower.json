@@ -1,0 +1,20 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "*",
+    "jquery": "3.3.1",
+    "jquery-validation": "1.17.0",
+    "jquery-validation-unobtrusive": "v3.2.10",
+    "angular": "*",
+    "angular-route": "v1.7.2",
+    "travelmap": "~1.0.2",
+    "underscore": "~1.9.1"
+  },
+  "resolutions": {
+    "angular": "1.7.2",
+    "jquery": "3.3.1",
+    "jquery-validation": "1.17.0",
+    "jquery-validation-unobtrusive": "v3.2.10"
+  }
+}

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>The World - @ViewBag.Title</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/yeti/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+
+<body>
+
+
+    <div id="sidebar">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <img src="~/images/user1.jpg" alt="headshot" class="headshot" />
+            <span id="username">@User.Identity.Name</span>
+        }
+        <ul class="list-unstyled">
+            <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
+            <li><a asp-controller="App" asp-action="About">About</a></li>
+            <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="App" asp-action="Trips">Trips</a></li>
+                <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+            }
+        </ul>
+    </div>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <button id="sidebarToggle" class="btn btn-primary">
+                            <i class="fa fa-angle-left"></i>
+                        </button>
+                    </li>
+                </ul>
+                <a asp-controller="App" asp-action="Index" class="navbar-brand mx-auto">The World</a>
+
+                <ul class="nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#" class="btn btn-sm btn-info nav-link">
+                            <i class="fa fa-save"></i> Save
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="btn btn-sm btn-info nav-link">
+                            <i class="fa fa-print"></i> Print
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <div id="main" class="container-fluid">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+        <footer id="footer" class="navbar-dark bg-dark">
+            <div class="container">
+                <span class="text-center text-muted">&copy; 2018 The World Ltd.</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", false)
+    <environment names="Development">
+        <script src="~/js/site.js"></script>
+    </environment>
+    <environment names="Production,Staging">
+        <script src="~/lib/_app/site.js"></script>
+    </environment>
+</body>
+
+</html>
